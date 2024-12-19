@@ -37,7 +37,9 @@ const TextFieldComponent = ({
       type={type}
       value={type === "date" ? timeFormatter(value) : value || ""}
       onChange={onChange}
-      required
+      required={
+        name === "password" || name === "passwordConfirm" ? false : true
+      }
     />
   ) : (
     <Select

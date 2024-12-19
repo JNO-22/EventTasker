@@ -1,22 +1,35 @@
 import { Container, Typography } from "@mui/material";
 import FormComponent from "@components/Forms/FormComponent";
+import { useEffect, useState } from "react";
 import Alerta from "@components/Alert/Alerta";
 import Loading from "@components/Loading/Loading";
 import useAxios from "axios-hooks";
 const Usuario = () => {
-  const user = JSON.parse(sessionStorage.getItem("user"));
+  const userSession = JSON.parse(sessionStorage.getItem("user"));
+  const [user, setUser] = useState({});
 
   const [{ data, loading, error }, execute] = useAxios({
     url: "http://localhost:3000/user/:id",
-    params: { id: user.id },
+    params: { id: userSession?.id },
   });
 
-  function handleSubmit(data, method, params) {
+  useEffect(() => {
+    if (data) {
+      setUser(data);
+    } else {
+      setUser({});
+    }
+  }, [data]);
+
+  function handleSubmit(item, method, params) {
+    if (method === "PUT") params = { id: userSession.id };
     execute({
       method: method,
-      data: data,
+      data: item,
       params: params,
     });
+    sessionStorage.setItem("user", JSON.stringify(item));
+    window.location.href = "/";
   }
 
   return (
@@ -34,10 +47,13 @@ const Usuario = () => {
       <Typography variant="h4" mb={2} textAlign={"center"}>
         Edita tu cuenta
       </Typography>
-      <FormComponent entity="user" item={data} onSubmit={handleSubmit} />
+      <FormComponent entity="user" item={user} onSubmit={handleSubmit} />
       {loading && <Loading />}
       {error && (
-        <Alerta severity="error" errorMsj={error.response.data.mensaje} />
+        <Alerta
+          severity="error"
+          errorMsj={error?.response?.data?.mensaje || "Servidor no disponible"}
+        />
       )}
     </Container>
   );
