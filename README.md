@@ -6,8 +6,10 @@ Aplicacion web para la gestion de eventos, tareas y de tareas relacionadas con e
 
 ### Desarrollo
 
-La estructura se penso en base a la arquitectura de Domain-Driven File Structuring.
-Utilizando componentes globales para la gestion de eventos, tareas y de tareas relacionadas con eventos.
+La estructura se penso en base a la arquitectura de Domain-Driven File Structuring.  
+Se utilizan componentes y servicios globales en torno a la aplicacion con componentes dedicados para casos especificos.  
+La carpeta de theme guardan los estilos globales y de componentes de mui.  
+Pages contiene las paginas de la aplicacion , routers la configuracion con el layout utilizada por reactRouters y store guarda los estados globales de eventos o tareas usados por redux ademas de sus reducers
 
 ### Tecnologias
 
