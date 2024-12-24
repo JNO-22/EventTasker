@@ -97,6 +97,7 @@ const FormComponent = ({ entity, item, onSubmit }) => {
                 onSubmit,
                 formData,
                 dispatch,
+                entity,
                 item
               )
             }

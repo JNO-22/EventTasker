@@ -25,8 +25,8 @@ const SwiperComponent = ({ data, isSmallScreen }) => {
       style={{
         display: "flex",
         width: "100%",
-        maxHeight: isSmallScreen ? "50vh" : "100vh",
-        padding: "1em 0",
+        maxHeight: isSmallScreen ? "50vh" : "90vh",
+        padding: "2em 0",
       }}
     >
       {data.map((item, index) => (

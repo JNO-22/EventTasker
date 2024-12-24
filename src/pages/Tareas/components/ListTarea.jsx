@@ -10,7 +10,16 @@ const ListTarea = ({ tarea }) => {
 
   return (
     <ListItemButton onClick={handleSelect}>
-      <ListItemText primary={tarea.titulo} secondary={tarea.descripcion} />
+      <ListItemText
+        primary={tarea.titulo}
+        secondary={tarea.descripcion}
+        sx={{
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+          whiteSpace: "nowrap",
+          width: "20em",
+        }}
+      />
     </ListItemButton>
   );
 };

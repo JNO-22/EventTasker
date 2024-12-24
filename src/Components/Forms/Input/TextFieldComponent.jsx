@@ -17,6 +17,7 @@ const TextFieldComponent = ({
   onChange,
   options,
 }) => {
+  const today = new Date().toISOString().split("T")[0];
   return type === "checkbox" ? (
     <Box sx={{ display: "flex", alignItems: "center" }}>
       <FormLabel htmlFor={name}>{label}</FormLabel>
@@ -35,11 +36,18 @@ const TextFieldComponent = ({
       id={name}
       label={label}
       type={type}
-      value={type === "date" ? timeFormatter(value) : value || ""}
+      multiline={name === "descripcion" ? true : false}
+      value={name === "fecha" ? timeFormatter(value) : value || ""}
       onChange={onChange}
       required={
         name === "password" || name === "passwordConfirm" ? false : true
       }
+      slotProps={{
+        inputLabel: { shrink: true },
+        htmlInput: {
+          min: name === "fecha" ? today : null,
+        },
+      }}
     />
   ) : (
     <Select

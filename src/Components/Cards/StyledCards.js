@@ -9,7 +9,7 @@ export const StyledCards = styled(Card, {
         display: "flex",
         flexDirection: "row",
         alignItems: "center",
-        height: "calc(80vh / 3)",
+        height: "calc(80vh / 4)",
         borderRadius: "1em",
         transition: "all 0.3s ease-in",
         boxShadow: "0px 8px 10px rgba(0, 0, 0, 0.1)",
@@ -44,7 +44,7 @@ export const StyledCards = styled(Card, {
   ],
 }));
 
-export const StyledCardMedia = styled(CardMedia)(({ theme }) => ({
+export const StyledCardMedia = styled(CardMedia)(() => ({
   variants: [
     {
       props: { variant: "event-card" },
@@ -54,10 +54,6 @@ export const StyledCardMedia = styled(CardMedia)(({ theme }) => ({
         width: "calc(80vh / 5)",
         clipPath: "circle(50% at 50% 50%)",
         transition: "all 0.3s ease-in",
-        [theme.breakpoints.down("sm")]: {
-          height: "calc(80vw / 3)",
-          width: "calc(80vw / 3)",
-        },
       },
     },
     {

@@ -16,7 +16,7 @@ const formConfigs = {
     fields: [
       { name: "titulo", label: "Titulo", type: "text" },
       { name: "lugar", label: "Ubicacion", type: "text" },
-      { name: "fecha", label: "", type: "date" },
+      { name: "fecha", label: "Fecha", type: "date" },
       {
         name: "categoria",
         label: "Selecciona la categoria",

@@ -49,6 +49,7 @@ const Events = () => {
     display: "flex",
     justifyContent: "center",
     width: "100%",
+    px: "1em",
     flexBasis: "50%",
     maxHeight: "calc(100vh - 2em)",
   };

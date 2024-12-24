@@ -15,9 +15,6 @@ const eventSlice = createSlice({
     removeEvent: (state) => {
       state.selected = {};
     },
-    clearEvents: (state) => {
-      state.events = [];
-    },
   },
 });
 

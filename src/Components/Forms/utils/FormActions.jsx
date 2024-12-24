@@ -18,8 +18,6 @@ export const handleFormSubmit = (
 ) => {
   event.preventDefault();
 
-  console.log(currentItem);
-
   if (entityType === "user") {
     if (formData.password !== formData.passwordConfirm) {
       // Validar si las contraseñas coinciden
@@ -44,12 +42,16 @@ export const clearForm = (
   onSubmit,
   formData,
   dispatch,
+  entityType,
   item
 ) => {
   setFormData({}); // Limpiar los datos del formulario
   setRequestMethod("POST"); // Establecer el método de solicitud POST
 
-  dispatch({ type: "event/removeEvent" }); // Limpiar el evento seleccionado
+  if (entityType === "event") {
+    dispatch({ type: "event/removeEvent" }); // Limpiar el evento seleccionado
+  }
+  dispatch({ type: "task/removeTask" });
 
   if (shouldDelete) {
     onSubmit(formData, "DELETE", { id: item.id }); //De ser necesario, Se elimina de la APi
