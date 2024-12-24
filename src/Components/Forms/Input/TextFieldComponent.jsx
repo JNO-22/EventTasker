@@ -37,7 +37,7 @@ const TextFieldComponent = ({
       label={label}
       type={type}
       multiline={name === "descripcion" ? true : false}
-      value={name === "fecha" ? timeFormatter(value) : value || ""}
+      value={type === "date" ? timeFormatter(value) : value || ""}
       onChange={onChange}
       required={
         name === "password" || name === "passwordConfirm" ? false : true
@@ -45,7 +45,7 @@ const TextFieldComponent = ({
       slotProps={{
         inputLabel: { shrink: true },
         htmlInput: {
-          min: name === "fecha" ? today : null,
+          min: type === "date" ? today : null,
         },
       }}
     />

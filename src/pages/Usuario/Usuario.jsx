@@ -10,7 +10,7 @@ const Usuario = () => {
 
   const [{ data, loading, error }, execute] = useAxios({
     url: "http://localhost:3000/user/:id",
-    params: { id: userSession?.id },
+    params: { id: userSession?.id || userSession?._id },
   });
 
   useEffect(() => {

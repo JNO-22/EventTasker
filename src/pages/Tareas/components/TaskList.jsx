@@ -1,12 +1,12 @@
 import { List } from "@mui/material";
-import { FetchData } from "../../../Services/handleData";
+import { useApi } from "../../../Services/handleData";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import ListTarea from "./ListTarea";
 
 const TaskList = () => {
   const selectedEvent = useSelector((state) => state.event.selected);
-  const { execute, data } = FetchData("tareas");
+  const { execute, data } = useApi("tareas");
   const [tareas, setTareas] = useState([]);
 
   useEffect(() => {

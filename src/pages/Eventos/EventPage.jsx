@@ -4,7 +4,7 @@ import SwiperComponent from "./components/SwiperComponent";
 import Loading from "@components/Loading/Loading";
 import Alerta from "@components/Alert/Alerta";
 import { useEffect, useState, useCallback, useMemo } from "react";
-import { FetchData, PostData } from "../../Services/handleData";
+import { useApi } from "../../Services/handleData";
 
 const Events = () => {
   const [events, setEvents] = useState([]);
@@ -12,9 +12,8 @@ const Events = () => {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
-  // FetchData y PostData
-  const { data, loading, alerta, errorMsj } = FetchData("eventos");
-  const { execute } = PostData("eventos");
+  // Funcion para manejar las peticiones a la API
+  const { data, loading, alerta, errorMsj, execute } = useApi("eventos");
 
   // useEffect para actualizar eventos
   useEffect(() => {

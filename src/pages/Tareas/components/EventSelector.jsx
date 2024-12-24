@@ -3,13 +3,13 @@ import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { fillEvents, selectEvent } from "../../../store/slices/eventSlice";
-import { FetchData } from "../../../Services/handleData";
+import { useApi } from "../../../Services/handleData";
 
 const EventSelector = () => {
   const dispatch = useDispatch();
   const events = useSelector((state) => state.event.events) || [];
   const eventSelected = useSelector((state) => state.event.selected) || {};
-  const { execute, data } = FetchData("eventos");
+  const { execute, data } = useApi("eventos");
 
   // useEffect para actualizar eventos
   useEffect(() => {

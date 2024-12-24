@@ -1,14 +1,14 @@
 import { Container, Typography } from "@mui/material";
 import FormComponent from "@components/Forms/FormComponent";
 import { useSelector } from "react-redux";
-import { PostData } from "../../../Services/handleData";
+import { useApi } from "../../../Services/handleData";
 import Alerta from "@components/Alert/Alerta";
 import Loading from "@components/Loading/Loading";
 
 const EditTask = () => {
   const task = useSelector((state) => state.task.selected);
   const event = useSelector((state) => state.event.selected);
-  const { execute, loading, alerta, errorMsj } = PostData("tareas");
+  const { execute, loading, alerta, errorMsj } = useApi("tareas");
 
   function handleSubmit(data, method, params) {
     if (method === "POST") params = { id: event.id };

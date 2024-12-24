@@ -21,8 +21,4 @@ const useApi = (entity, method = "GET") => {
   return { data, loading, alerta, execute, errorMsj: alertaMsj };
 };
 
-// GET request hook
-export const FetchData = (entity) => useApi(entity, "GET");
-
-// POST request hook
-export const PostData = (entity) => useApi(entity, "POST");
+export { useApi };
